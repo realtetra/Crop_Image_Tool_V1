@@ -1,0 +1,385 @@
+.image-editor {
+  width: 100%;
+  height: 100%;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 180px);
+}
+
+/* Updated toolbar style */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+  gap: 15px;
+}
+
+.app.dark .editor-toolbar {
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #333;
+}
+
+.toolbar-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.toolbar-button:hover {
+  background-color: #f0f0f0;
+}
+
+.toolbar-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toolbar-button.active {
+  background-color: #e6f7ff;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.app.dark .toolbar-button {
+  background-color: #333;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.app.dark .toolbar-button:hover {
+  background-color: #444;
+}
+
+.app.dark .toolbar-button.active {
+  background-color: #001f3d;
+  border-color: #177ddc;
+  color: #177ddc;
+}
+
+.toolbar-select {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 13px;
+}
+
+.app.dark .toolbar-select {
+  background-color: #333;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.color-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.app.dark .color-button {
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+/* Filter panel styles */
+.filter-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.app.dark .filter-panel {
+  background-color: #1e1e1e;
+  border-left: 1px solid #333;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.editor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.editor-workspace {
+  flex: 1;
+  position: relative;
+  min-height: 400px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app.dark .editor-workspace {
+  background-color: #2a2a2a;
+}
+
+.upload-prompt {
+  text-align: center;
+  padding: 30px;
+  max-width: 500px;
+}
+
+.upload-prompt h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.app.dark .upload-prompt h2 {
+  color: #e0e0e0;
+}
+
+.upload-prompt p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.app.dark .upload-prompt p {
+  color: #bbb;
+}
+
+/* Color picker styles */
+.color-picker-container {
+  position: relative;
+}
+
+.color-picker-popover {
+  position: absolute;
+  z-index: 200;
+  top: 40px;
+  right: 0;
+}
+
+.color-picker-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .editor-toolbar {
+    flex-direction: column;
+    padding: 8px;
+  }
+  
+  .toolbar-section {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .filter-panel {
+    width: 100%;
+    height: auto;
+    max-height: 50%;
+    top: auto;
+    bottom: 0;
+    border-top: 1px solid #e0e0e0;
+    border-left: none;
+  }
+  
+  .app.dark .filter-panel {
+    border-top: 1px solid #333;
+    border-left: none;
+  }
+}
+
+.preview-container {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.app.dark .preview-container {
+  border-top: 1px solid #333;
+}
+
+.preview-container h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.app.dark .preview-container h3 {
+  color: #e0e0e0;
+}
+
+.crop-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.app.dark .crop-preview {
+  background-color: #2a2a2a;
+  border-color: #333;
+}
+
+.crop-preview img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.crop-preview img.circle {
+  border-radius: 50%;
+}
+
+.color-picker-container {
+  position: relative;
+}
+
+.color-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.app.dark .color-preview {
+  border-color: #555;
+}
+
+.zoom-control {
+  margin-top: 15px;
+}
+
+.zoom-control label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.app.dark .zoom-control label {
+  color: #bbb;
+}
+
+.zoom-control input {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #4285f4;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3367d6;
+}
+
+.export-settings {
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.app.dark .export-settings {
+  background-color: #2a2a2a;
+}
+
+.settings-toggle {
+  margin-bottom: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.dropzone {
+  display: inline-block;
+}
+
+.dimensions-group {
+  margin-top: 15px;
+}
+
+.dimensions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.lock-dimensions {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.lock-dimensions input {
+  margin-right: 5px;
+}
+
+.dimensions-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dimension-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dimension-input label {
+  width: 15px;
+  flex-shrink: 0;
+}
+
+.dimension-input input {
+  width: 100%;
+}
+
+.dimensions-inputs select {
+  width: 60px;
+  flex-shrink: 0;
+} 

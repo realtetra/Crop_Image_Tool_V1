@@ -1,0 +1,259 @@
+.settings-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.settings-header h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.app.dark .settings-header h2 {
+  color: #e0e0e0;
+}
+
+.success-message {
+  background-color: #e6f4ea;
+  color: #0f9d58;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.app.dark .success-message {
+  background-color: #1e352f;
+  color: #81c995;
+}
+
+.settings-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 20px;
+}
+
+.settings-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.app.dark .settings-section {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.settings-section:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app.dark .settings-section:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.app.dark .section-header {
+  border-bottom: 1px solid #333;
+}
+
+.section-header h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.app.dark .section-header h3 {
+  color: #e0e0e0;
+}
+
+.section-header h3 svg,
+.section-header h3 span {
+  margin-right: 8px;
+  color: #4285f4;
+}
+
+.app.dark .section-header h3 svg,
+.app.dark .section-header h3 span {
+  color: #90CAF9;
+}
+
+.reset-btn {
+  color: #666;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.app.dark .reset-btn {
+  color: #bbb;
+  border-color: #555;
+}
+
+.reset-btn:hover {
+  background-color: #f1f3f4;
+  color: #d93025;
+}
+
+.app.dark .reset-btn:hover {
+  background-color: #333;
+  color: #ea8a8a;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.setting-item label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.app.dark .setting-item label {
+  color: #e0e0e0;
+}
+
+.setting-item input[type="text"],
+.setting-item input[type="number"],
+.setting-item select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.app.dark .setting-item input[type="text"],
+.app.dark .setting-item input[type="number"],
+.app.dark .setting-item select {
+  background-color: #333;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+.setting-item input[type="range"] {
+  width: 100%;
+}
+
+.setting-item input[type="color"] {
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.app.dark .setting-item input[type="color"] {
+  border-color: #555;
+}
+
+/* Toggle switch styling */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+  cursor: pointer;
+}
+
+.toggle-label:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-label {
+  background-color: #4285f4;
+}
+
+.app.dark input:checked + .toggle-label {
+  background-color: #90CAF9;
+}
+
+input:checked + .toggle-label:before {
+  transform: translateX(20px);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .settings-sections {
+    grid-template-columns: 1fr;
+  }
+  
+  .settings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .settings-actions {
+    width: 100%;
+  }
+  
+  .settings-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-page {
+    padding: 10px;
+  }
+  
+  .settings-section {
+    padding: 15px;
+  }
+} 
